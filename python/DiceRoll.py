@@ -63,10 +63,14 @@ if __name__ == "__main__":
         doOutputFile = True
 
 
+
+    # unrelated: easiest way to get random probabilities that sum to 1
+    # get nsides random numbers, divide them each by the sum of the numbers
+
     # check probabilities:
     # if no probabilities were given, make some
     if probs == None:
-        probs = (1.0/Nsides) * np.ones(Nsides)
+        probs = ((1.0/Nsides) * np.ones(Nsides)).tolist()
     else:
         # check probability string for cleanliness with regex
         # checks for square bracketed arrays of ints or floats
@@ -82,10 +86,11 @@ if __name__ == "__main__":
                 probs.append(float(s))
 
     # checks for numerical validity. if the sum of the array is significantly > or < 1, quit.
-    ep = 1e-7
+    ep = 1e-6
     if (np.abs(1 - np.sum(probs)) < ep):
         pass;
     else:
+        print(np.sum(probs))
         print("Probabilities must sum to 1")
         sys.exit(1)
     
@@ -108,7 +113,7 @@ if __name__ == "__main__":
         print("Something Broke")
         sys.exit(1)
     else:
-        results["rolls"] = str(rolls)
+        results["rolls"] = rolls
 
 
     # for later analysis, print the results as a JSON object to a file

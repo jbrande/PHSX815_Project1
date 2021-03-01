@@ -17,3 +17,5 @@ The main program file is python/DiceRoll.py, which can be run with these input p
 Random.py has been modified to sample numbers from a categorical distribution with given probabilities. Currently, there is no analysis code. Feel free to play around with this.
 
 For best results, run the program from the top level directory as "python python/DiceRoll.py [params]"
+
+Needed dependencies: numpy, matplotlib
